@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Torneig BlackoutRugby</title>
+  <style>
+    :root{
+      --bg:#0f172a; /* slate-900 */
+      --panel:#111827; /* gray-900 */
+      --muted:#94a3b8; /* slate-400 */
+      --text:#e5e7eb; /* gray-200 */
+      --accent:#22d3ee; /* cyan-400 */
+      --accent-2:#a78bfa; /* violet-400 */
+      --ok:#34d399; /* emerald-400 */
+      --warn:#f59e0b; /* amber-500 */
+      --danger:#f87171; /* red-400 */
+      --card:#0b1224; /* custom */
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),#0b1020 60%,#0a0f1a);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif;}
+    a{color:var(--accent)}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{
+      position:sticky;top:0;z-index:10;
+      backdrop-filter:saturate(180%) blur(8px);
+      background:rgba(8,13,25,.8); border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:12px 24px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:36px;height:36px;border-radius:10px;background:radial-gradient(circle at 30% 30%, var(--accent), var(--accent-2));box-shadow:0 0 30px rgba(34,211,238,.4)}
+    .brand h1{font-size:1.1rem;margin:0;letter-spacing:.5px}
+    .menu{display:flex;gap:12px;flex-wrap:wrap}
+    .menu a{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.06);text-decoration:none;color:var(--text);border:1px solid rgba(255,255,255,.08)}
+    .menu a:hover{background:rgba(255,255,255,.1)}
+
+    .hero{padding:64px 24px 24px}
+    .hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.3);padding:20px}
+    .title{font-size:clamp(28px,3vw,42px);margin:0 0 6px}
+    .subtitle{margin:0;color:var(--muted)}
+    .pill{display:inline-block;margin-top:12px;padding:6px 10px;border-radius:999px;background:rgba(34,211,238,.15);border:1px solid rgba(34,211,238,.3);color:#bff6ff;font-size:.9rem}
+    .grid{display:grid;gap:16px}
+    .grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .grid.cols-3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+
+    h2{margin:0 0 10px;font-size:1.3rem}
+    .muted{color:var(--muted)}
+    .kpi{display:flex;gap:14px;align-items:center}
+    .kpi .num{font-weight:700;font-size:1.4rem}
+
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:10px;border-bottom:1px solid rgba(255,255,255,.07);text-align:left}
+    th{color:#bcd3ff;font-weight:600;background:rgba(255,255,255,.04)}
+    tr:hover td{background:rgba(255,255,255,.02)}
+
+    .badge{padding:3px 8px;border-radius:999px;font-size:.8rem;border:1px solid rgba(255,255,255,.2)}
+    .badge.ok{background:rgba(52,211,153,.1);border-color:rgba(52,211,153,.35)}
+    .badge.warn{background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.35)}
+
+    .footer{padding:24px;color:var(--muted);text-align:center}
+    .cta{display:flex;gap:10px;flex-wrap:wrap}
+    .cta input,.cta button, .cta select{padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#0b1224;color:var(--text)}
+    .cta button{cursor:pointer;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#05111a;border:none;font-weight:700}
+
+    .section{padding:24px}
+    .two-col{display:grid;grid-template-columns:2fr 1fr;gap:24px}
+
+    @media (max-width: 860px){
+      .hero .wrap{grid-template-columns:1fr}
+      .two-col{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav container">
+      <div class="brand"><div class="logo" aria-hidden="true"></div><h1>Torneig BlackoutRugby</h1></div>
+      <div class="menu">
+        <a href="#informacio">Informació</a>
+        <a href="#calendari">Calendari</a>
+        <a href="#equips">Equips</a>
+        <a href="#partits">Partits</a>
+        <a href="#classificacio">Classificació</a>
+        <a href="#inscripcions">Inscripcions</a>
+        <a href="#contacte">Contacte</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container wrap">
+        <div class="card">
+          <p class="pill" id="datesPill">Edició 2025 · 6–7 setembre · Online</p>
+          <h2 class="title" id="titol">Copa BlackoutRugby Catalunya</h2>
+          <p class="subtitle" id="subtitol">Torneig amistós 8 equips · format fase de grups + eliminatòries</p>
+          <div class="grid cols-3" style="margin-top:16px">
+            <div class="kpi card">
+              <div>
+                <div class="num" id="kpiEquips">8</div>
+                <div class="muted">Equips</div>
+              </div>
+            </div>
+            <div class="kpi card">
+              <div>
+                <div class="num" id="kpiPartits">12</div>
+                <div class="muted">Partits totals</div>
+              </div>
+            </div>
+            <div class="kpi card">
+              <div>
+                <div class="num" id="kpiPremi">🏆</div>
+                <div class="muted">Premi: honor i glòria</div>
+              </div>
+            </div>
+          </div>
+          <div class="cta" style="margin-top:16px">
+            <a href="#inscripcions"><button>Inscriu el teu equip</button></a>
+            <a href="#bases" class="badge warn">Llegir bases del torneig</a>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Proper partit</h2>
+          <div id="properPartit" class="muted">Encara no definit</div>
+          <hr style="border-color:rgba(255,255,255,.06);margin:16px 0">
+          <h2>Últims resultats</h2>
+          <ul id="ultimsResultats" class="muted" style="padding-left:18px;margin:0"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="informacio" class="section">
+      <div class="container two-col">
+        <div class="card">
+          <h2>Informació i Bases <span id="bases" class="badge">v1.0</span></h2>
+          <ol>
+            <li>Fase de grups (dos grups de 4) + Semifinals + Final.</li>
+            <li>Simulacions a BlackoutRugby (ed. clàssica). Administrador: <strong>Organització</strong>.</li>
+            <li>Horari recomanat: 6–7 setembre 2025 (CEST).</li>
+            <li>Per participar, cal confirmar <a href="#inscripcions">aquí</a>.</li>
+          </ol>
+          <p class="muted">Pots personalitzar tot el text directament a l’HTML.</p>
+        </div>
+        <div class="card">
+          <h2>Sponsors</h2>
+          <p class="muted">Afegeix logos o enllaços dels teus patrocinadors aquí.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="calendari" class="section">
+      <div class="container">
+        <div class="card">
+          <h2>Calendari</h2>
+          <table id="taulaCalendari">
+            <thead><tr><th>Data</th><th>Fase</th><th>Partit</th><th>Estat</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="equips" class="section">
+      <div class="container">
+        <div class="card">
+          <h2>Equips</h2>
+          <div id="llistaEquips" class="grid cols-2"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="partits" class="section">
+      <div class="container">
+        <div class="card">
+          <h2>Partits (fase de grups)</h2>
+          <div class="grid cols-2" id="partitsGrups"></div>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <h2>Eliminatòries</h2>
+          <div id="bracket" class="grid cols-2"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="classificacio" class="section">
+      <div class="container">
+        <div class="card">
+          <h2>Classificació</h2>
+          <div class="grid cols-2" id="taulesClassificacio"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="inscripcions" class="section">
+      <div class="container two-col">
+        <div class="card">
+          <h2>Inscripcions</h2>
+          <form id="formInscripcio" class="cta" onsubmit="return enviarFormulari(event)">
+            <input required name="equip" placeholder="Nom de l’equip" />
+            <input required name="manager" placeholder="Manager (nick BR)" />
+            <input type="email" name="email" placeholder="Correu (opcional)" />
+            <select name="grup" required>
+              <option value="A">Grup A</option>
+              <option value="B">Grup B</option>
+            </select>
+            <button type="submit">Enviar</button>
+          </form>
+          <p class="muted" style="margin-top:10px">⚠️ Formulari de mostra (no envia res). Substitueix-ho per un Google Form o similar.</p>
+        </div>
+        <div class="card">
+          <h2>Lloc i horaris</h2>
+          <p class="muted">Online a BlackoutRugby · CEST (Europa/Praga).</p>
+          <div style="height:220px;border-radius:12px;background:repeating-linear-gradient(45deg, rgba(255,255,255,.05), rgba(255,255,255,.05) 8px, rgba(255,255,255,.03) 8px, rgba(255,255,255,.03) 16px);"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacte" class="section">
+      <div class="container">
+        <div class="card">
+          <h2>Contacte</h2>
+          <p>Per dubtes, escriu a <a href="mailto:organitzacio@example.com">organitzacio@example.com</a> o al xat del joc.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">© <span id="any"></span> Torneig BlackoutRugby · Fet amb ♥</footer>
+
+  <script>
+  // === CONFIGURACIÓ EDITABLE ===
+  const CONFIG = {
+    titol: "Copa BlackoutRugby Catalunya",
+    dates: "6–7 setembre 2025",
+    tipus: "Fase de grups + eliminatòries",
+    equips: [
+      { nom:"Demà M'afeitaràs", manager:"DMA", grup:"A", csr:307000 },
+      { nom:"Baskonia", manager:"BAS", grup:"A", csr:330000 },
+      { nom:"RIB", manager:"RIB", grup:"A", csr:274000 },
+      { nom:"Oyocántaro", manager:"OYO", grup:"A", csr:293000 },
+      { nom:"Setanta", manager:"SET", grup:"B", csr:297000 },
+      { nom:"Vichelocregos-dos-Outeiros", manager:"VDO", grup:"B", csr:275000 },
+      { nom:"Equip 7", manager:"E7", grup:"B", csr:250000 },
+      { nom:"Equip 8", manager:"E8", grup:"B", csr:245000 }
+    ],
+    // Partits de grup (exemple). Hora en local CEST.
+    grups: {
+      A: [
+        { data:"2025-09-06 10:00", local:"Demà M'afeitaràs", visitant:"Baskonia", estat:"pendent"},
+        { data:"2025-09-06 12:00", local:"RIB", visitant:"Oyocántaro", estat:"pendent"},
+        { data:"2025-09-06 16:00", local:"Demà M'afeitaràs", visitant:"RIB", estat:"pendent"},
+        { data:"2025-09-06 18:00", local:"Baskonia", visitant:"Oyocántaro", estat:"pendent"},
+        { data:"2025-09-07 10:00", local:"Demà M'afeitaràs", visitant:"Oyocántaro", estat:"pendent"},
+        { data:"2025-09-07 12:00", local:"Baskonia", visitant:"RIB", estat:"pendent"}
+      ],
+      B: [
+        { data:"2025-09-06 10:00", local:"Setanta", visitant:"Vichelocregos-dos-Outeiros", estat:"pendent"},
+        { data:"2025-09-06 12:00", local:"Equip 7", visitant:"Equip 8", estat:"pendent"},
+        { data:"2025-09-06 16:00", local:"Setanta", visitant:"Equip 7", estat:"pendent"},
+        { data:"2025-09-06 18:00", local:"Vichelocregos-dos-Outeiros", visitant:"Equip 8", estat:"pendent"},
+        { data:"2025-09-07 10:00", local:"Setanta", visitant:"Equip 8", estat:"pendent"},
+        { data:"2025-09-07 12:00", local:"Vichelocregos-dos-Outeiros", visitant:"Equip 7", estat:"pendent"}
+      ]
+    },
+    // Eliminatòries (es poden omplir quan es coneguin)
+    eliminatories: [
+      { fase:"Semifinal 1", data:"2025-09-07 16:00", local:"1r Grup A", visitant:"2n Grup B", estat:"pendent" },
+      { fase:"Semifinal 2", data:"2025-09-07 18:00", local:"1r Grup B", visitant:"2n Grup A", estat:"pendent" },
+      { fase:"Final", data:"2025-09-07 21:00", local:"Guanyador S1", visitant:"Guanyador S2", estat:"pendent" }
+    ]
+  };
+
+  // === UTILITATS ===
+  const fmt = (s)=> new Date(s.replace(' ','T')+':00').toLocaleString('ca-ES',{dateStyle:'medium', timeStyle:'short'});
+  const by = (k)=> (a,b)=> (a[k]>b[k]?1:-1);
+
+  // === RENDER ===
+  function renderHero(){
+    document.getElementById('titol').textContent = CONFIG.titol;
+    document.getElementById('datesPill').textContent = `Edició 2025 · ${CONFIG.dates} · Online`;
+    document.getElementById('subtitol').textContent = `${CONFIG.equips.length} equips · ${CONFIG.tipus}`;
+    document.getElementById('kpiEquips').textContent = CONFIG.equips.length;
+    const totalPartits = CONFIG.grups.A.length + CONFIG.grups.B.length + CONFIG.eliminatories.length;
+    document.getElementById('kpiPartits').textContent = totalPartits;
+    document.getElementById('any').textContent = new Date().getFullYear();
+  }
+
+  function renderCalendari(){
+    const tbody = document.querySelector('#taulaCalendari tbody');
+    tbody.innerHTML = '';
+    const files = [];
+    for(const [grup, llista] of Object.entries(CONFIG.grups)){
+      llista.forEach(p => files.push({data:p.data, fase:`Grup ${grup}`, txt:`${p.local} vs ${p.visitant}`, estat:p.estat}))
+    }
+    CONFIG.eliminatories.forEach(e=> files.push({data:e.data, fase:e.fase, txt:`${e.local} vs ${e.visitant}`, estat:e.estat}))
+    files.sort((a,b)=> new Date(a.data.replace(' ','T')) - new Date(b.data.replace(' ','T')));
+    files.forEach(r=>{
+      const tr=document.createElement('tr');
+      tr.innerHTML = `<td>${fmt(r.data)}</td><td>${r.fase}</td><td>${r.txt}</td><td><span class="badge ${r.estat==='finalitzat'?'ok':(r.estat==='en joc'?'warn':'')}">${r.estat}</span></td>`;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function renderEquips(){
+    const cont = document.getElementById('llistaEquips');
+    cont.innerHTML = '';
+    CONFIG.equips.sort(by('nom')).forEach(e=>{
+      const div = document.createElement('div');
+      div.className='card';
+      div.innerHTML = `<h3 style="margin:0 0 4px">${e.nom}</h3>
+        <div class="muted">Manager: <strong>${e.manager}</strong> · Grup ${e.grup} · CSR ${e.csr.toLocaleString('ca-ES')}</div>`;
+      cont.appendChild(div);
+    })
+  }
+
+  function renderPartitsGrups(){
+    const cont = document.getElementById('partitsGrups');
+    cont.innerHTML='';
+    for(const [grup, partits] of Object.entries(CONFIG.grups)){
+      const div = document.createElement('div');
+      div.className='card';
+      div.innerHTML = `<h3 style="margin:0 0 8px">Grup ${grup}</h3>`;
+      const tbl = document.createElement('table');
+      tbl.innerHTML = `<thead><tr><th>Data</th><th>Local</th><th></th><th>Visitant</th><th>Estat</th></tr></thead>`;
+      const tb = document.createElement('tbody');
+      partits.forEach(p=>{
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${fmt(p.data)}</td><td>${p.local}</td><td style="text-align:center">vs</td><td>${p.visitant}</td><td>${p.estat}</td>`;
+        tb.appendChild(tr);
+      })
+      tbl.appendChild(tb); div.appendChild(tbl); cont.appendChild(div);
+    }
+  }
+
+  function renderEliminatories(){
+    const cont = document.getElementById('bracket');
+    cont.innerHTML='';
+    const semis = CONFIG.eliminatories.filter(e=> e.fase.includes('Semifinal'));
+    const final = CONFIG.eliminatories.find(e=> e.fase==='Final');
+
+    const col1 = document.createElement('div'); col1.className='card';
+    col1.innerHTML = `<h3 style="margin:0 0 8px">Semifinals</h3>`;
+    const t1 = document.createElement('table'); t1.innerHTML = `<thead><tr><th>Data</th><th>Local</th><th></th><th>Visitant</th><th>Estat</th></tr></thead>`;
+    const tb1 = document.createElement('tbody');
+    semis.forEach(s=>{
+      const tr=document.createElement('tr'); tr.innerHTML = `<td>${fmt(s.data)}</td><td>${s.local}</td><td style="text-align:center">vs</td><td>${s.visitant}</td><td>${s.estat}</td>`; tb1.appendChild(tr);
+    });
+    t1.appendChild(tb1); col1.appendChild(t1);
+
+    const col2 = document.createElement('div'); col2.className='card';
+    col2.innerHTML = `<h3 style="margin:0 0 8px">Final</h3>`;
+    const t2 = document.createElement('table'); t2.innerHTML = `<thead><tr><th>Data</th><th>Local</th><th></th><th>Visitant</th><th>Estat</th></tr></thead>`;
+    const tb2 = document.createElement('tbody');
+    if(final){ const tr=document.createElement('tr'); tr.innerHTML = `<td>${fmt(final.data)}</td><td>${final.local}</td><td style="text-align:center">vs</td><td>${final.visitant}</td><td>${final.estat}</td>`; tb2.appendChild(tr); }
+    t2.appendChild(tb2); col2.appendChild(t2);
+
+    cont.appendChild(col1); cont.appendChild(col2);
+  }
+
+  function renderClassificacio(){
+    const cont = document.getElementById('taulesClassificacio');
+    cont.innerHTML='';
+    const grups = ['A','B'];
+    grups.forEach(g=>{
+      const div=document.createElement('div');
+      div.className='card';
+      div.innerHTML = `<h3 style="margin:0 0 8px">Grup ${g}</h3>`;
+      const tbl=document.createElement('table');
+      tbl.innerHTML = `<thead><tr><th>Equip</th><th>PJ</th><th>PG</th><th>PE</th><th>PP</th><th>PF</th><th>PC</th><th>Pts</th></tr></thead>`;
+      const tb=document.createElement('tbody');
+      // Exemple: classificació inicial en blanc (0s). Substitueix amb dades reals.
+      CONFIG.equips.filter(e=> e.grup===g).forEach(e=>{
+        const tr=document.createElement('tr');
+        tr.innerHTML = `<td>${e.nom}</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>`;
+        tb.appendChild(tr);
+      });
+      tbl.appendChild(tb); div.appendChild(tbl); cont.appendChild(div);
+    })
+  }
+
+  function renderProperPartitIUltims(){
+    // Troba el pròxim partit pendent més proper en el temps
+    const ara = new Date();
+    const tots = [...CONFIG.grups.A, ...CONFIG.grups.B, ...CONFIG.eliminatories];
+    const pendents = tots.filter(p=> p.estat==='pendent').map(p=> ({...p, when:new Date(p.data.replace(' ','T'))}));
+    pendents.sort((a,b)=> a.when - b.when);
+    const prox = pendents.find(p=> p.when > ara);
+    const div = document.getElementById('properPartit');
+    if(prox){ div.innerHTML = `<strong>${prox.local}</strong> vs <strong>${prox.visitant}</strong><br><span class="muted">${fmt(prox.data)}</span>`; }
+    else { div.textContent = 'Cap partit pendent'; }
+
+    // Últims resultats (si hi hagués finalitzats)
+    const acabats = tots.filter(p=> p.estat==='finalitzat').slice(-5);
+    const ul = document.getElementById('ultimsResultats'); ul.innerHTML='';
+    if(acabats.length===0){ ul.innerHTML = '<li>Encara no hi ha resultats.</li>'; return; }
+    acabats.forEach(p=>{
+      const li=document.createElement('li'); li.textContent = `${p.local} ${p.marcador||''} ${p.visitant} · ${fmt(p.data)}`; ul.appendChild(li);
+    })
+  }
+
+  function enviarFormulari(ev){
+    ev.preventDefault();
+    const f = ev.target;
+    alert(`Inscripció rebuda (exemple)\nEquip: ${f.equip.value}\nManager: ${f.manager.value}\nGrup: ${f.grup.value}`);
+    f.reset();
+    return false;
+  }
+
+  // Inicialitza
+  renderHero();
+  renderCalendari();
+  renderEquips();
+  renderPartitsGrups();
+  renderEliminatories();
+  renderClassificacio();
+  renderProperPartitIUltims();
+  </script>
+</body>
+</html>
