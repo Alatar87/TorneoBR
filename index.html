@@ -10,7 +10,7 @@
       --accent:#22d3ee; --accent-2:#a78bfa; --ok:#34d399; --warn:#f59e0b; --danger:#f87171; --card:#0b1224;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),#0b1020 60%,#0a0f1a);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif;}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),#0b1020 60%,#0a0f1a);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif}
     a{color:var(--accent)}
     .container{max-width:1100px;margin:0 auto;padding:24px}
     header{position:sticky;top:0;z-index:10;backdrop-filter:saturate(180%) blur(8px);background:rgba(8,13,25,.8); border-bottom:1px solid rgba(255,255,255,.06)}
@@ -21,6 +21,7 @@
     .menu{display:flex;gap:12px;flex-wrap:wrap}
     .menu a{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.06);text-decoration:none;color:var(--text);border:1px solid rgba(255,255,255,.08)}
     .menu a:hover{background:rgba(255,255,255,.1)}
+
     .hero{padding:64px 24px 24px}
     .hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
     .card{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.3);padding:20px}
@@ -30,24 +31,38 @@
     .grid{display:grid;gap:16px}
     .grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
     .grid.cols-3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+
     h2{margin:0 0 10px;font-size:1.3rem}
     .muted{color:var(--muted)}
     .kpi{display:flex;gap:14px;align-items:center}
     .kpi .num{font-weight:700;font-size:1.4rem}
+
     table{width:100%;border-collapse:collapse}
     th,td{padding:10px;border-bottom:1px solid rgba(255,255,255,.07);text-align:left}
     th{color:#bcd3ff;font-weight:600;background:rgba(255,255,255,.04)}
     tr:hover td{background:rgba(255,255,255,.02)}
+
     .badge{padding:3px 8px;border-radius:999px;font-size:.8rem;border:1px solid rgba(255,255,255,.2)}
     .badge.ok{background:rgba(52,211,153,.1);border-color:rgba(52,211,153,.35)}
     .badge.warn{background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.35)}
+
     .footer{padding:24px;color:var(--muted);text-align:center}
     .cta{display:flex;gap:10px;flex-wrap:wrap}
-    .cta input,.cta button, .cta select{padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#0b1224;color:var(--text)}
+    .cta input,.cta button, .cta select, .cta textarea{padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#0b1224;color:var(--text)}
     .cta button{cursor:pointer;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#05111a;border:none;font-weight:700}
+
     .section{padding:24px}
     .two-col{display:grid;grid-template-columns:2fr 1fr;gap:24px}
-    @media (max-width: 860px){ .hero .wrap{grid-template-columns:1fr} .two-col{grid-template-columns:1fr} }
+
+    .note{background:rgba(34,211,238,.08);border:1px dashed rgba(34,211,238,.35);padding:12px;border-radius:12px}
+    .small{font-size:.92rem}
+    .right{float:right}
+
+    @media (max-width: 860px){
+      .hero .wrap{grid-template-columns:1fr}
+      .two-col{grid-template-columns:1fr}
+      .right{float:none}
+    }
   </style>
 </head>
 <body>
@@ -60,6 +75,8 @@
         <a href="#equipos">Equipos</a>
         <a href="#partidos">Partidos</a>
         <a href="#clasificacion">Clasificación</a>
+        <a href="#trofeos">Trofeos</a>
+        <a href="#reglamento">Reglamento</a>
         <a href="#inscripciones">Inscripciones</a>
         <a href="#contacto">Contacto</a>
       </div>
@@ -72,18 +89,21 @@
         <div class="card">
           <p class="pill" id="datesPill">Edición 2025 · 6–7 septiembre · Online</p>
           <h2 class="title" id="titol">Copa BlackoutRugby Nacional</h2>
-          <p class="subtitle" id="subtitol">Torneo amistoso 4 equipos · formato grupos + eliminatorias</p>
+          <p class="subtitle" id="subtitol">Torneo amistoso 4 equipos · formato liga (14 jornadas) + final</p>
           <div class="grid cols-3" style="margin-top:16px">
             <div class="kpi card"><div><div class="num" id="kpiEquips">4</div><div class="muted">Equipos</div></div></div>
-            <div class="kpi card"><div><div class="num" id="kpiPartits">3</div><div class="muted">Partidos totales</div></div></div>
-            <div class="kpi card"><div><div class="num" id="kpiPremi">🏆</div><div class="muted">Premio: honor y gloria</div></div></div>
+            <div class="kpi card"><div><div class="num" id="kpiPartits">16</div><div class="muted">Partidos totales*</div></div></div>
+            <div class="kpi card"><div><div class="num" id="kpiPremi">🏆🏆</div><div class="muted">Trofeos: campeón y subcampeón</div></div></div>
           </div>
+          <p class="muted small" style="margin-top:8px">*14 jornadas de liga + final (y final de consolación).</p>
           <div class="cta" style="margin-top:16px">
             <a href="#inscripciones"><button>Inscribe tu equipo</button></a>
-            <a href="#bases" class="badge warn">Leer bases del torneo</a>
+            <a href="#reglamento" class="badge warn">Leer reglamento</a>
+            <a href="https://www.blackoutrugby.com/home.php" target="_blank" rel="noopener" class="badge">Sitio oficial Blackout Rugby</a>
           </div>
         </div>
         <div class="card">
+          <label class="small" style="display:block;margin-bottom:6px"><input type="checkbox" id="adminToggle"> Modo admin (local)</label>
           <h2>Próximo partido</h2>
           <div id="properPartit" class="muted">Aún no definido</div>
           <hr style="border-color:rgba(255,255,255,.06);margin:16px 0">
@@ -96,18 +116,18 @@
     <section id="informacion" class="section">
       <div class="container two-col">
         <div class="card">
-          <h2>Información y Bases <span id="bases" class="badge">v1.0</span></h2>
-          <ol>
-            <li>Dos grupos (A y B) con 2 equipos cada uno + Final entre campeones de grupo.</li>
-            <li>Simulaciones en BlackoutRugby (ed. clásica). Administrador: <strong>Organización</strong>.</li>
-            <li>Fechas objetivo: 6–7 septiembre 2025 (CEST).</li>
-            <li>Para participar, confirma <a href="#inscripciones">aquí</a>.</li>
-          </ol>
-          <p class="muted">Puedes personalizar todo el texto directamente en el HTML.</p>
+          <h2>Información general</h2>
+          <p>Temporada 59 · Participan 4 equipos: <strong>Lokomotíva Košice</strong>, <strong>Madrid Rugby Club</strong>, <strong>Amics de la Cervesa</strong> y <strong>Amics de la Pilsner Urquell</strong>. Para evitar conflicto de manager, <em>Amics</em> y <em>Pilsner</em> no se enfrentan entre sí en la liga regular.</p>
+          <p>La liga consta de <strong>14 jornadas</strong>. Tras la liga, se juega una <strong>final entre 1º y 2º</strong>, y <strong>final de consolación</strong> entre 3º y 4º.</p>
         </div>
         <div class="card">
-          <h2>Patrocinadores</h2>
-          <p class="muted">Añade aquí logos o enlaces a patrocinadores.</p>
+          <h2>Requisitos BlackoutRugby</h2>
+          <div class="note">
+            <ul>
+              <li>Debes tener un enlace en la página principal de tu sitio que apunte a <a href="https://www.blackoutrugby.com/home.php" target="_blank" rel="noopener">https://www.blackoutrugby.com/home.php</a>.</li>
+              <li>Tu sitio <strong>no</strong> debe usar el logotipo de Blackout Rugby en el encabezado (donde normalmente aparece el logo del sitio).</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -116,10 +136,26 @@
       <div class="container">
         <div class="card">
           <h2>Calendario</h2>
+          <p class="muted small">Puedes mantener los resultados vía <code>results.json</code> en el repositorio o temporalmente en tu navegador (modo admin).</p>
           <table id="taulaCalendari">
-            <thead><tr><th>Fecha</th><th>Fase</th><th>Partido</th><th>Estado</th></tr></thead>
+            <thead><tr><th>Jornada</th><th>Fecha</th><th>Fase</th><th>Partido</th><th>Marcador</th><th>Ensayos</th><th>Estado</th></tr></thead>
             <tbody></tbody>
           </table>
+          <div id="adminPanel" style="display:none; margin-top:16px" class="note">
+            <h3 style="margin:0 0 8px">Editor de datos (admin local)</h3>
+            <div class="cta">
+              <button id="btnExport">Descargar results.json</button>
+              <button id="btnLoadRepo">Cargar desde results.json del repo</button>
+            </div>
+            <p class="small muted" style="margin:8px 0 4px">Pega aquí un JSON válido para importar/editar:</p>
+            <textarea id="jsonArea" rows="10" style="width:100%" placeholder='[{"jornada":1,"fase":"Liga","fecha":"2025-09-01 20:00","local":"Lokomotíva Košice","visitante":"Madrid Rugby Club","pL":0,"pV":0,"tL":0,"tV":0,"estado":"pendiente"}, ...]'></textarea>
+            <div class="cta" style="margin-top:8px">
+              <button id="btnImport">Importar JSON</button>
+              <button id="btnGuardarLocal">Guardar en este navegador</button>
+              <button id="btnReset">Resetear a plantilla</button>
+            </div>
+            <p class="small muted">Sugerencia: sube el fichero descargado como <code>results.json</code> a la raíz del repo para que la web lo consuma automáticamente.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -136,7 +172,7 @@
     <section id="partidos" class="section">
       <div class="container">
         <div class="card">
-          <h2>Partidos (fase de grupos)</h2>
+          <h2>Partidos (liga)</h2>
           <div class="grid cols-2" id="partitsGrups"></div>
         </div>
         <div class="card" style="margin-top:16px">
@@ -150,7 +186,46 @@
       <div class="container">
         <div class="card">
           <h2>Clasificación</h2>
-          <div class="grid cols-2" id="taulesClassificacio"></div>
+          <div id="tablaClasificacion" class="grid cols-2"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="trofeos" class="section">
+      <div class="container">
+        <div class="card">
+          <h2>Trofeos</h2>
+          <ul>
+            <li>🏆 Campeón: <span id="trofeoCampeon" class="muted">por decidir</span></li>
+            <li>🥈 Subcampeón: <span id="trofeoSub" class="muted">por decidir</span></li>
+          </ul>
+          <p class="muted small">Los trofeos se asignan al finalizar la gran final y la clasificación general.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="reglamento" class="section">
+      <div class="container">
+        <div class="card">
+          <h2>Reglamento (adaptación Copa Hispánica)</h2>
+          <p>Este torneo está compuesto por managers con equipos activos en España en el juego online Blackout Rugby. Los equipos pueden jugar en cualquier país del juego.</p>
+          <p>El torneo de la <strong>Copa BlackoutRugby Nacional</strong> se disputa con 4 equipos en temporada 59. La liga regular consta de 14 jornadas (dos partidos por jornada). Para evitar conflicto de manager, <em>Amics de la Cervesa</em> y <em>Amics de la Pilsner Urquell</em> no se enfrentarán entre sí durante la liga. Tras la liga, habrá una gran final entre 1º y 2º y un partido de consolación entre 3º y 4º. Hay <strong>dos trofeos</strong>: campeón y subcampeón.</p>
+          <p>Los partidos se juegan en el horario del amistoso que aplique al equipo local. El objetivo principal es dar minutos de calidad para mejorar a los jugadores.</p>
+          <h3 style="margin-top:12px">Puntuación por partido</h3>
+          <ul>
+            <li>4 puntos por victoria, 2 por empate, 0 por derrota.</li>
+            <li>+1 punto bonus por anotar 4 o más ensayos.</li>
+            <li>+1 punto bonus por perder por 7 o menos puntos.</li>
+          </ul>
+          <h3 style="margin-top:12px">Desempates en la clasificación</h3>
+          <ol>
+            <li>Mejor diferencia de puntos (PF − PC).</li>
+            <li>Mayor número de puntos a favor (PF).</li>
+            <li>Menor número de puntos en contra (PC).</li>
+            <li>Mayor número de bonus por ensayos.</li>
+            <li>Mayor número de bonus por derrota.</li>
+            <li>Si persiste el empate, sorteo.</li>
+          </ol>
         </div>
       </div>
     </section>
@@ -159,21 +234,11 @@
       <div class="container two-col">
         <div class="card">
           <h2>Inscripciones</h2>
-          <form id="formInscripcio" class="cta" onsubmit="return enviarFormulari(event)">
-            <input required name="equip" placeholder="Nombre del equipo" />
-            <input required name="manager" placeholder="Manager (nick BR)" />
-            <input type="email" name="email" placeholder="Correo (opcional)" />
-            <select name="grup" required>
-              <option value="A">Grupo A</option>
-              <option value="B">Grupo B</option>
-            </select>
-            <button type="submit">Enviar</button>
-          </form>
-          <p class="muted" style="margin-top:10px">⚠️ Formulario de ejemplo (no envía nada). Sustituye por un Google Form o similar.</p>
+          <p class="muted">Inscripciones cerradas para esta edición.</p>
         </div>
         <div class="card">
           <h2>Lugar y horarios</h2>
-          <p class="muted">Online en BlackoutRugby · CEST (Europa/Praga).</p>
+          <p class="muted">Online en BlackoutRugby · CEST.</p>
           <div style="height:220px;border-radius:12px;background:repeating-linear-gradient(45deg, rgba(255,255,255,.05), rgba(255,255,255,.05) 8px, rgba(255,255,255,.03) 8px, rgba(255,255,255,.03) 16px);"></div>
         </div>
       </div>
@@ -190,128 +255,237 @@
 
   </main>
 
-  <footer class="footer">© <span id="any"></span> Copa BlackoutRugby Nacional · Hecho con ♥</footer>
+  <footer class="footer">© <span id="any"></span> Copa BlackoutRugby Nacional · Hecho con ♥ · <a href="https://www.blackoutrugby.com/home.php" target="_blank" rel="noopener">Blackout Rugby</a></footer>
 
   <script>
+  // === CONFIGURACIÓN BASE ===
   const CONFIG = {
     titol: "Copa BlackoutRugby Nacional",
-    dates: "6–7 septiembre 2025",
-    tipus: "Fase de grupos + eliminatorias",
+    dates: "Temporada 59",
+    tipus: "Liga (14 jornadas) + Final",
     equips: [
       { nom:"Lokomotíva Košice", manager:"LOK", grup:"A", csr:300000 },
       { nom:"Madrid Rugby Club", manager:"MAD", grup:"A", csr:295000 },
       { nom:"Amics de la Cervesa", manager:"ADC", grup:"B", csr:285000 },
       { nom:"Amics de la Pilsner Urquell", manager:"APU", grup:"B", csr:280000 }
-    ],
-    grups: {
-      A: [ { data:"2025-09-06 10:00", local:"Lokomotíva Košice", visitant:"Madrid Rugby Club", estat:"pendent"} ],
-      B: [ { data:"2025-09-06 12:00", local:"Amics de la Cervesa", visitant:"Amics de la Pilsner Urquell", estat:"pendent"} ]
-    },
-    eliminatories: [ { fase:"Final", data:"2025-09-07 18:00", local:"1º Grupo A", visitant:"1º Grupo B", estat:"pendent" } ]
+    ]
   };
-  const fmt = (s)=> new Date(s.replace(' ','T')+':00').toLocaleString('es-ES',{dateStyle:'medium', timeStyle:'short'});
-  const by = (k)=> (a,b)=> (a[k]>b[k]?1:-1);
+
+  // Estado de datos (partidos)
+  const STATE = {
+    partidos: [] // se cargan de results.json o de plantilla
+  };
+
+  // Plantilla de 14 jornadas + finales (sin fechas definidas)
+  function plantillaPartidos(){
+    const eq = ["Lokomotíva Košice","Madrid Rugby Club","Amics de la Cervesa","Amics de la Pilsner Urquell"];
+    // Generamos una plantilla que evita ADC vs APU en liga
+    const rounds = [];
+    for(let j=1;j<=14;j++){
+      // Alternamos emparejamientos sin ADC vs APU
+      const par1 = j%2===0 ? [eq[0], eq[2]] : [eq[0], eq[3]]; // LOK-ADC o LOK-APU
+      const par2 = j%2===0 ? [eq[1], eq[3]] : [eq[1], eq[2]]; // MAD-APU o MAD-ADC
+      rounds.push(
+        { jornada:j, fase:"Liga", fecha:"", local:par1[0], visitante:par1[1], pL:null, pV:null, tL:null, tV:null, estado:"pendiente" },
+        { jornada:j, fase:"Liga", fecha:"", local:par2[0], visitante:par2[1], pL:null, pV:null, tL:null, tV:null, estado:"pendiente" }
+      );
+    }
+    // Jornada 15: Final y Consolación
+    rounds.push(
+      { jornada:15, fase:"Final", fecha:"", local:"1º Liga", visitante:"2º Liga", pL:null, pV:null, tL:null, tV:null, estado:"pendiente" },
+      { jornada:15, fase:"Consolación", fecha:"", local:"3º Liga", visitante:"4º Liga", pL:null, pV:null, tL:null, tV:null, estado:"pendiente" }
+    );
+    return rounds;
+  }
+
+  // Intentamos cargar results.json desde el repo
+  async function cargarDesdeRepo(){
+    try{
+      const res = await fetch('results.json', {cache:'no-store'});
+      if(!res.ok) throw new Error('no results.json');
+      const data = await res.json();
+      if(Array.isArray(data)) STATE.partidos = data; else throw new Error('formato inválido');
+    }catch(e){
+      // Si no existe, usamos localStorage o plantilla
+      const local = localStorage.getItem('cbn_results');
+      STATE.partidos = local ? JSON.parse(local) : plantillaPartidos();
+    }
+  }
+
+  // Utilidades
+  const fmt = (s)=> s? new Date(s.replace(' ','T')+':00').toLocaleString('es-ES',{dateStyle:'medium', timeStyle:'short'}) : '—';
+
   function renderHero(){
     document.getElementById('titol').textContent = CONFIG.titol;
-    document.getElementById('datesPill').textContent = `Edición 2025 · ${CONFIG.dates} · Online`;
+    document.getElementById('datesPill').textContent = `${CONFIG.dates} · Online`;
     document.getElementById('subtitol').textContent = `${CONFIG.equips.length} equipos · ${CONFIG.tipus}`;
     document.getElementById('kpiEquips').textContent = CONFIG.equips.length;
-    const totalPartits = (CONFIG.grups.A?.length||0) + (CONFIG.grups.B?.length||0) + (CONFIG.eliminatories?.length||0);
-    document.getElementById('kpiPartits').textContent = totalPartits;
     document.getElementById('any').textContent = new Date().getFullYear();
   }
-  function renderCalendari(){
+
+  function renderCalendario(){
     const tbody = document.querySelector('#taulaCalendari tbody');
     tbody.innerHTML = '';
-    const files = [];
-    for(const [grup, llista] of Object.entries(CONFIG.grups)){
-      llista.forEach(p => files.push({data:p.data, fase:`Grupo ${grup}`, txt:`${p.local} vs ${p.visitant}`, estat:p.estat}))
-    }
-    CONFIG.eliminatories.forEach(e=> files.push({data:e.data, fase:e.fase, txt:`${e.local} vs ${e.visitant}`, estat:e.estat}))
-    files.sort((a,b)=> new Date(a.data.replace(' ','T')) - new Date(b.data.replace(' ','T')));
-    files.forEach(r=>{
-      const tr=document.createElement('tr');
-      const estadoClas = r.estat==='finalitzat'?'ok':(r.estat==='en joc'?'warn':''); const estadoTxt = r.estat==='pendent'?'pendiente':(r.estat==='en joc'?'en juego':'finalizado');
-      tr.innerHTML = `<td>${fmt(r.data)}</td><td>${r.fase}</td><td>${r.txt}</td><td><span class="badge ${estadoClas}">${estadoTxt}</span></td>`;
+    const copia = [...STATE.partidos].sort((a,b)=> a.jornada===b.jornada ? (a.fase>b.fase?1:-1) : a.jornada-b.jornada);
+    copia.forEach(r=>{
+      const tr = document.createElement('tr');
+      const marcador = (r.pL!=null&&r.pV!=null)? `${r.pL} – ${r.pV}`:'—';
+      const ensayos = (r.tL!=null&&r.tV!=null)? `${r.tL} – ${r.tV}`:'—';
+      tr.innerHTML = `<td>${r.jornada}</td><td>${fmt(r.fecha)}</td><td>${r.fase}</td><td>${r.local} vs ${r.visitante}</td><td>${marcador}</td><td>${ensayos}</td><td>${r.estado}</td>`;
       tbody.appendChild(tr);
     });
   }
-  function renderEquips(){
-    const cont = document.getElementById('llistaEquips');
-    cont.innerHTML = '';
-    CONFIG.equips.sort(by('nom')).forEach(e=>{
+
+  function renderEquipos(){
+    const cont = document.getElementById('llistaEquips'); cont.innerHTML='';
+    CONFIG.equips.forEach(e=>{
       const div = document.createElement('div');
       div.className='card';
-      div.innerHTML = `<h3 style="margin:0 0 4px">${e.nom}</h3>
-        <div class="muted">Manager: <strong>${e.manager}</strong> · Grupo ${e.grup} · CSR ${e.csr.toLocaleString('es-ES')}</div>`;
+      div.innerHTML = `<h3 style="margin:0 0 4px">${e.nom}</h3><div class="muted">Manager: <strong>${e.manager}</strong> · Grupo ${e.grup}</div>`;
       cont.appendChild(div);
-    })
+    });
   }
-  function renderPartitsGrups(){
-    const cont = document.getElementById('partitsGrups');
-    cont.innerHTML='';
-    for(const [grup, partits] of Object.entries(CONFIG.grups)){
-      const div = document.createElement('div');
-      div.className='card';
-      div.innerHTML = `<h3 style="margin:0 0 8px">Grupo ${grup}</h3>`;
+
+  function renderEliminatorias(){
+    const cont = document.getElementById('bracket'); cont.innerHTML='';
+    const fin = STATE.partidos.filter(p=> p.jornada===15).sort((a,b)=> a.fase>b.fase?1:-1);
+    fin.forEach(p=>{
+      const div = document.createElement('div'); div.className='card';
+      div.innerHTML = `<h3 style="margin:0 0 8px">${p.fase}</h3>`;
       const tbl = document.createElement('table');
-      tbl.innerHTML = `<thead><tr><th>Fecha</th><th>Local</th><th></th><th>Visitante</th><th>Estado</th></tr></thead>`;
+      tbl.innerHTML = `<thead><tr><th>Fecha</th><th>Local</th><th></th><th>Visitante</th><th>Marcador</th><th>Estado</th></tr></thead>`;
       const tb = document.createElement('tbody');
-      partits.forEach(p=>{
-        const tr = document.createElement('tr');
-        const estadoTxt = p.estat==='pendent'?'pendiente':(p.estat==='en joc'?'en juego':'finalizado');
-        tr.innerHTML = `<td>${fmt(p.data)}</td><td>${p.local}</td><td style="text-align:center">vs</td><td>${p.visitant}</td><td>${estadoTxt}</td>`;
-        tb.appendChild(tr);
-      })
-      tbl.appendChild(tb); div.appendChild(tbl); cont.appendChild(div);
+      const tr = document.createElement('tr');
+      const marcador = (p.pL!=null&&p.pV!=null)? `${p.pL} – ${p.pV}`:'—';
+      tr.innerHTML = `<td>${fmt(p.fecha)}</td><td>${p.local}</td><td style="text-align:center">vs</td><td>${p.visitante}</td><td>${marcador}</td><td>${p.estado}</td>`;
+      tb.appendChild(tr); tbl.appendChild(tb); div.appendChild(tbl); cont.appendChild(div);
+    });
+  }
+
+  // Clasificación según reglas
+  function calcularClasificacion(){
+    const equipos = CONFIG.equips.map(e=> e.nom);
+    const tabla = Object.fromEntries(equipos.map(n=> [n,{Equipo:n,PJ:0,PG:0,PE:0,PP:0,PF:0,PC:0,PB_ens:0,PB_der:0,Pts:0,Diff:0}]));
+    const jugados = STATE.partidos.filter(p=> p.estado==='finalizado' && p.pL!=null && p.pV!=null);
+    jugados.forEach(p=>{
+      const L = tabla[p.local]; const V = tabla[p.visitante];
+      L.PJ++; V.PJ++; L.PF+=p.pL; L.PC+=p.pV; V.PF+=p.pV; V.PC+=p.pL;
+      // Resultado
+      if(p.pL>p.pV){ L.PG++; V.PP++; L.Pts+=4; }
+      else if(p.pL<p.pV){ V.PG++; L.PP++; V.Pts+=4; }
+      else { L.PE++; V.PE++; L.Pts+=2; V.Pts+=2; }
+      // Bonus por ensayos
+      if(typeof p.tL==='number' && p.tL>=4) { L.PB_ens++; L.Pts++; }
+      if(typeof p.tV==='number' && p.tV>=4) { V.PB_ens++; V.Pts++; }
+      // Bonus por derrota por <=7
+      const dif = Math.abs(p.pL - p.pV);
+      if(p.pL<p.pV && dif<=7){ L.PB_der++; L.Pts++; }
+      if(p.pV<p.pL && dif<=7){ V.PB_der++; V.Pts++; }
+    });
+    Object.values(tabla).forEach(r=> r.Diff = r.PF - r.PC);
+    const orden = Object.values(tabla).sort((a,b)=>
+      b.Pts-a.Pts || b.Diff-a.Diff || b.PF-a.PF || a.PC-b.PC || b.PB_ens-a.PB_ens || b.PB_der-a.PB_der
+    );
+    return orden;
+  }
+
+  function renderClasificacion(){
+    const destino = document.getElementById('tablaClasificacion'); destino.innerHTML='';
+    const tabla = calcularClasificacion();
+    const card = document.createElement('div'); card.className='card';
+    const tbl = document.createElement('table');
+    tbl.innerHTML = `<thead><tr><th>Pos</th><th>Equipo</th><th>PJ</th><th>PG</th><th>PE</th><th>PP</th><th>PF</th><th>PC</th><th>Diff</th><th>PB ens.</th><th>PB der.</th><th>Puntos</th></tr></thead>`;
+    const tb = document.createElement('tbody');
+    tabla.forEach((r,i)=>{
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${i+1}</td><td>${r.Equipo}</td><td>${r.PJ}</td><td>${r.PG}</td><td>${r.PE}</td><td>${r.PP}</td><td>${r.PF}</td><td>${r.PC}</td><td>${r.Diff}</td><td>${r.PB_ens}</td><td>${r.PB_der}</td><td><strong>${r.Pts}</strong></td>`;
+      tb.appendChild(tr);
+    });
+    tbl.appendChild(tb); card.appendChild(tbl); destino.appendChild(card);
+
+    // Trofeos (si hay final jugada, usa final; si no, usa clasificación)
+    const fin = STATE.partidos.find(p=> p.fase==='Final' && p.estado==='finalizado');
+    if(fin){
+      document.getElementById('trofeoCampeon').textContent = fin.pL>fin.pV ? fin.local : (fin.pV>fin.pL ? fin.visitante : 'por decidir');
+      document.getElementById('trofeoSub').textContent = fin.pL>fin.pV ? fin.visitante : (fin.pV>fin.pL ? fin.local : 'por decidir');
+    }else{
+      document.getElementById('trofeoCampeon').textContent = tabla[0]?.Equipo||'por decidir';
+      document.getElementById('trofeoSub').textContent = tabla[1]?.Equipo||'por decidir';
     }
   }
-  function renderEliminatories(){
-    const cont = document.getElementById('bracket');
-    cont.innerHTML='';
-    const final = CONFIG.eliminatories.find(e=> e.fase==='Final');
-    const col2 = document.createElement('div'); col2.className='card';
-    col2.innerHTML = `<h3 style="margin:0 0 8px">Final</h3>`;
-    const t2 = document.createElement('table'); t2.innerHTML = `<thead><tr><th>Fecha</th><th>Local</th><th></th><th>Visitante</th><th>Estado</th></tr></thead>`;
-    const tb2 = document.createElement('tbody');
-    if(final){ const estadoTxt = final.estat==='pendent'?'pendiente':(final.estat==='en joc'?'en juego':'finalizado');
-      const tr=document.createElement('tr'); tr.innerHTML = `<td>${fmt(final.data)}</td><td>${final.local}</td><td style="text-align:center">vs</td><td>${final.visitant}</td><td>${estadoTxt}</td>`; tb2.appendChild(tr); }
-    t2.appendChild(tb2); col2.appendChild(t2);
-    cont.appendChild(col2);
-  }
-  function renderClassificacio(){
-    const cont = document.getElementById('taulesClassificacio');
-    cont.innerHTML='';
-    ['A','B'].forEach(g=>{
-      const div=document.createElement('div'); div.className='card';
-      div.innerHTML = `<h3 style="margin:0 0 8px">Grupo ${g}</h3>`;
-      const tbl=document.createElement('table');
-      tbl.innerHTML = `<thead><tr><th>Equipo</th><th>PJ</th><th>PG</th><th>PE</th><th>PP</th><th>PF</th><th>PC</th><th>Pts</th></tr></thead>`;
-      const tb=document.createElement('tbody');
-      CONFIG.equips.filter(e=> e.grup===g).forEach(e=>{
-        const tr=document.createElement('tr');
-        tr.innerHTML = `<td>${e.nom}</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>`;
-        tb.appendChild(tr);
-      });
-      tbl.appendChild(tb); div.appendChild(tbl); cont.appendChild(div);
-    })
-  }
-  function renderProperPartitIUltims(){
-    const ara = new Date();
-    const tots = [...(CONFIG.grups.A||[]), ...(CONFIG.grups.B||[]), ...(CONFIG.eliminatories||[])];
-    const pendents = tots.filter(p=> p.estat==='pendent').map(p=> ({...p, when:new Date(p.data.replace(' ','T'))}));
-    pendents.sort((a,b)=> a.when - b.when);
-    const prox = pendents.find(p=> p.when > ara);
+
+  function renderProximoYUltimos(){
+    const ahora = new Date();
+    // Próximo: por fecha si hay; si no, por jornada
+    const futuros = STATE.partidos.filter(p=> p.estado==='pendiente');
+    let prox = futuros.find(p=> p.fecha);
+    if(prox){
+      const conFecha = futuros.filter(p=> p.fecha).map(p=> ({...p, cuando:new Date(p.fecha.replace(' ','T'))})).sort((a,b)=> a.cuando-b.cuando);
+      prox = conFecha[0];
+    }else{
+      prox = futuros.sort((a,b)=> a.jornada-b.jornada)[0];
+    }
     const div = document.getElementById('properPartit');
-    if(prox){ div.innerHTML = `<strong>${prox.local}</strong> vs <strong>${prox.visitant}</strong><br><span class="muted">${fmt(prox.data)}</span>`; }
+    if(prox){ div.innerHTML = `<strong>${prox.local}</strong> vs <strong>${prox.visitante}</strong><br><span class="muted">${prox.fase} · ${prox.fecha?fmt(prox.fecha):'Fecha por confirmar'}</span>`; }
     else { div.textContent = 'No hay partidos pendientes'; }
-    const acabats = tots.filter(p=> p.estat==='finalitzat').slice(-5);
+
+    // Últimos resultados
+    const jugados = STATE.partidos.filter(p=> p.estado==='finalizado' && p.pL!=null && p.pV!=null);
+    jugados.sort((a,b)=> (b.jornada-a.jornada) || (b.fase>a.fase?1:-1));
     const ul = document.getElementById('ultimsResultats'); ul.innerHTML='';
-    if(acabats.length===0){ ul.innerHTML = '<li>Todavía no hay resultados.</li>'; return; }
-    acabats.forEach(p=>{ const li=document.createElement('li'); li.textContent = `${p.local} ${p.marcador||''} ${p.visitant} · ${fmt(p.data)}`; ul.appendChild(li); })
+    if(jugados.length===0){ ul.innerHTML = '<li>Todavía no hay resultados.</li>'; return; }
+    jugados.slice(0,5).forEach(p=>{
+      const li = document.createElement('li'); li.textContent = `${p.local} ${p.pL}-${p.pV} ${p.visitante} · ${p.fase} · ${p.fecha?fmt(p.fecha):'Fecha N/D'}`; ul.appendChild(li);
+    });
   }
-  function enviarFormulari(ev){ ev.preventDefault(); const f = ev.target; alert(`Inscripción recibida (ejemplo)\nEquipo: ${f.equip.value}\nManager: ${f.manager.value}\nGrupo: ${f.grup.value}`); f.reset(); return false; }
-  renderHero(); renderCalendari(); renderEquips(); renderPartitsGrups(); renderEliminatories(); renderClassificacio(); renderProperPartitIUltims();
+
+  // Admin local
+  function bindAdmin(){
+    const toggle = document.getElementById('adminToggle');
+    const panel = document.getElementById('adminPanel');
+    toggle.addEventListener('change',()=>{ panel.style.display = toggle.checked? 'block':'none'; });
+    document.getElementById('btnExport').addEventListener('click',()=>{
+      const blob = new Blob([JSON.stringify(STATE.partidos,null,2)],{type:'application/json'});
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'results.json'; a.click(); URL.revokeObjectURL(a.href);
+    });
+    document.getElementById('btnLoadRepo').addEventListener('click',async()=>{
+      await cargarDesdeRepo();
+      document.getElementById('jsonArea').value = JSON.stringify(STATE.partidos, null, 2);
+      renderAll();
+    });
+    document.getElementById('btnImport').addEventListener('click',()=>{
+      try{
+        const data = JSON.parse(document.getElementById('jsonArea').value);
+        if(Array.isArray(data)){ STATE.partidos = data; renderAll(); alert('Datos importados'); }
+        else alert('El JSON debe ser un array de partidos');
+      }catch(e){ alert('JSON inválido'); }
+    });
+    document.getElementById('btnGuardarLocal').addEventListener('click',()=>{
+      localStorage.setItem('cbn_results', JSON.stringify(STATE.partidos));
+      alert('Guardado en este navegador. Sube el results.json al repo para hacerlo público.');
+    });
+    document.getElementById('btnReset').addEventListener('click',()=>{
+      STATE.partidos = plantillaPartidos();
+      document.getElementById('jsonArea').value = JSON.stringify(STATE.partidos, null, 2);
+      renderAll();
+    });
+  }
+
+  function renderAll(){
+    renderCalendario();
+    renderEliminatorias();
+    renderClasificacion();
+    renderProximoYUltimos();
+  }
+
+  // Init
+  (async function(){
+    renderHero();
+    await cargarDesdeRepo();
+    renderEquipos();
+    bindAdmin();
+    renderAll();
+  })();
   </script>
 </body>
 </html>
