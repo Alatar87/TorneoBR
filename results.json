@@ -8,7 +8,7 @@
     "pL": 0,
     "pV": 121,
     "tL": 0,
-    "tV": 0,
+    "tV": 17,
     "estado": "finalizado"
   },
   {
@@ -19,33 +19,33 @@
     "visitante": "Amics de la Pilsner Urquell",
     "pL": 71,
     "pV": 0,
-    "tL": 0,
+    "tL": 10,
     "tV": 0,
     "estado": "finalizado"
   },
   {
     "jornada": 2,
     "fase": "Liga",
-    "fecha": "",
+    "fecha": "2025-09-29 19:35",
     "local": "Lokomotíva Košice",
     "visitante": "C.P. Les Abelles",
-    "pL": null,
-    "pV": null,
-    "tL": null,
-    "tV": null,
-    "estado": "pendiente"
+    "pL": 0,
+    "pV": 141,
+    "tL": 0,
+    "tV": 21,
+    "estado": "finalizado"
   },
   {
     "jornada": 2,
     "fase": "Liga",
-    "fecha": "",
+    "fecha": "2025-09-29 19:35",
     "local": "Amics de la Cervesa",
     "visitante": "Amics de la Pilsner Urquell",
-    "pL": null,
-    "pV": null,
-    "tL": null,
-    "tV": null,
-    "estado": "pendiente"
+    "pL": 44,
+    "pV": 7,
+    "tL": 6,
+    "tV": 1,
+    "estado": "finalizado"
   },
   {
     "jornada": 3,
@@ -62,38 +62,50 @@
   {
     "jornada": 3,
     "fase": "Liga",
-    "fecha": "",
-    "local": "Amics de la Pilsner Urquell",
-    "visitante": "Lokomotíva Košice",
-    "pL": null,
-    "pV": null,
-    "tL": null,
-    "tV": null,
-    "estado": "pendiente"
+    "fecha": "2025-10-06 19:35",
+    "local": "Lokomotíva Košice",
+    "visitante": "Amics de la Pilsner Urquell",
+    "pL": 0,
+    "pV": 141,
+    "tL": 0,
+    "tV": 21,
+    "estado": "finalizado"
+  },
+  {
+    "jornada": 3,
+    "fase": "Liga",
+    "fecha": "2025-10-06 19:35",
+    "local": "Amics de la Cervesa",
+    "visitante": "C.P. Les Abelles",
+    "pL": 59,
+    "pV": 3,
+    "tL": 8,
+    "tV": 0,
+    "estado": "finalizado"
   },
   {
     "jornada": 4,
     "fase": "Liga",
-    "fecha": "",
+    "fecha": "2025-10-13 19:35",
     "local": "Amics de la Cervesa",
     "visitante": "Lokomotíva Košice",
-    "pL": null,
-    "pV": null,
-    "tL": null,
-    "tV": null,
-    "estado": "pendiente"
+    "pL": 139,
+    "pV": 0,
+    "tL": 20,
+    "tV": 0,
+    "estado": "finalizado"
   },
   {
     "jornada": 4,
     "fase": "Liga",
-    "fecha": "",
+    "fecha": "2025-10-13 19:35",
     "local": "Amics de la Pilsner Urquell",
     "visitante": "C.P. Les Abelles",
-    "pL": null,
-    "pV": null,
-    "tL": null,
-    "tV": null,
-    "estado": "pendiente"
+    "pL": 16,
+    "pV": 46,
+    "tL": 2,
+    "tV": 7,
+    "estado": "finalizado"
   },
   {
     "jornada": 5,
