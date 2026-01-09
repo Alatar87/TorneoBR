@@ -50,18 +50,6 @@
   {
     "jornada": 3,
     "fase": "Liga",
-    "fecha": "",
-    "local": "C.P. Les Abelles",
-    "visitante": "Amics de la Pilsner Urquell",
-    "pL": null,
-    "pV": null,
-    "tL": null,
-    "tV": null,
-    "estado": "pendiente"
-  },
-  {
-    "jornada": 3,
-    "fase": "Liga",
     "fecha": "2025-10-06 19:35",
     "local": "Amics de la Cervesa",
     "visitante": "C.P. Les Abelles",
